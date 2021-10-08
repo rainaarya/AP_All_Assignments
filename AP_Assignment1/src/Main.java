@@ -6,6 +6,22 @@ public class Main {
     private HashMap<String, Citizen> citizens = new HashMap<String, Citizen>();
     private ArrayList<Slot> slots = new ArrayList<Slot>();
 
+    public void printLines() {
+        //System.out.println();
+        System.out.println("----------------------------------");
+    }
+
+    public void showMenu() {
+        System.out.println("\t\t\tMenu:\n1. Add Vaccine\n" +
+                "2. Register Hospital\n" +
+                "3. Register Citizen\n" +
+                "4. Add Slot for Vaccination\n" +
+                "5. Book Slot for Vaccination\n" +
+                "6. List all slots for a hospital\n" +
+                "7. Check Vaccination Status\n" +
+                "8. Exit\n");
+
+    }
 
     public void addVaccine(String name, int doses, int gap) {
         vaccines.add(new Vaccine(name, doses, gap));
@@ -18,6 +34,7 @@ public class Main {
     public void addCitizen(String name, int age, String id) {
         if (!(id.matches("[0-9]+") && id.length() == 12)) {
             System.out.println("Invalid Citizen ID entered");
+            return;
         }
         Citizen tempCitizen = new Citizen(name, age, id);
         if (!tempCitizen.isEligible())
@@ -72,10 +89,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Main COWIN = new Main();
-        char var = 'y';
-        while (var != 'n') {
+        System.out.println("CoWin Portal Initialised....");
+
+        int choice;
+        do {
+            COWIN.printLines();
+            COWIN.showMenu();
             System.out.print("Enter choice: ");
-            int choice = sc.nextInt();
+            choice = sc.nextInt();
             sc.nextLine(); // eat the buffer
 
             switch (choice) {
@@ -150,11 +171,17 @@ public class Main {
                     COWIN.check(citizen_id);
                     break;
                 }
+                case 8: {
+                    System.out.println("Exiting the Program!");
+                    break;
+                }
+
+                default:
+                    System.out.println("Invalid Choice! Try again!");
             }
 
-            System.out.print("Do you want to Continue? (y/n): ");
-            var = sc.next().charAt(0);
-        }
+
+        } while (choice != 8);
 
 
     }
