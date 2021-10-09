@@ -82,15 +82,25 @@ public class Citizen {
 
             }
 
+            //slots.get(i).getVaccine().getName().equals(vac_name)
         } else if (vaccination_status.equals("PARTIALLY VACCINATED")) {
 
             ArrayList<Integer> temp_slot_id = new ArrayList<Integer>(); // to store eligible slot ids (for error checking)
             int tempflag = 0;
             for (int i = 0; i < slots.size(); ++i) {
-                if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0 && slots.get(i).getDay() == next_dose_date) {
-                    System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
-                    temp_slot_id.add(i);
-                    tempflag = 1;
+                if (vac_name.equals("NULL")) {
+                    if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0 && slots.get(i).getDay() >= next_dose_date) {  //changed from == to >= as user can take vaccine on or after next dose date
+                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
+                        temp_slot_id.add(i);
+                        tempflag = 1;
+                    }
+                } else {
+                    if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0 && slots.get(i).getVaccine().getName().equals(vac_name) && slots.get(i).getDay() >= next_dose_date) {  //changed from == to >= as user can take vaccine on or after next dose date
+                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
+                        temp_slot_id.add(i);
+                        tempflag = 1;
+                    }
+
                 }
             }
             if (tempflag == 0) {
