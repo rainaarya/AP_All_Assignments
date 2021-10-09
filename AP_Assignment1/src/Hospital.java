@@ -30,9 +30,9 @@ public class Hospital {
 
 
     public void displayDetails() {
-        System.out.println("Allocated Unique Hospital ID is " + hospital_id);
         System.out.println("Hospital Name: " + name);
         System.out.println("PinCode: " + pincode);
+        System.out.println("Unique ID: " + hospital_id);
     }
 
     public void createSlots(ArrayList<Vaccine> vaccines, ArrayList<Slot> slots) {
@@ -71,11 +71,17 @@ public class Hospital {
     }
 
     public void availableSlots(ArrayList<Slot> slots) {
+        boolean flag = false;
         for (int i = 0; i < slots.size(); ++i) {
-            if (slots.get(i).getHospital().equals(this)) {
+            if (slots.get(i).getHospital().equals(this)) {      //check if slot[i]'s hospital is same as the user entered hospital
                 slots.get(i).printSlotHospital();
+                flag = true;
             }
         }
+        if (!flag) {
+            System.out.println("This Hospital Has No Slots Currently!");
+        }
+
     }
 
 
