@@ -82,7 +82,6 @@ public class Citizen {
 
             }
 
-            //slots.get(i).getVaccine().getName().equals(vac_name)
         } else if (vaccination_status.equals("PARTIALLY VACCINATED")) {
 
             ArrayList<Integer> temp_slot_id = new ArrayList<Integer>(); // to store eligible slot ids (for error checking)
@@ -177,95 +176,9 @@ public class Citizen {
                         return;
                     }
 
-                    getVaccinated(slots, hospitals, vaccines, hospital_id, "NULL");
+
                     // CODE from here is to check the available slots for the citizen according to eligibility etc
-
-
-                    /*if (vaccination_status.equals("REGISTERED")) {
-                        ArrayList<Integer> temp_slot_id = new ArrayList<Integer>(); // to store eligible slot ids (for error checking)
-                        int tempflag = 0;
-                        for (int i = 0; i < slots.size(); ++i) {
-                            if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0) {
-                                System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
-                                temp_slot_id.add(i);
-                                tempflag = 1;
-                            }
-                        }
-                        if (tempflag == 0) {
-                            System.out.println("No Slots Available");
-                        } else {
-                            System.out.print("Choose Slot: ");
-                            int slot_no = sc.nextInt();
-                            sc.nextLine(); // eat the buffer
-                            if (!temp_slot_id.contains(slot_no)) {
-                                System.out.println("Slot Number Entered is not in the list shown!");
-                                return;
-                            }
-
-                            //if everything is satisfied until now, then vaccinate him/her
-
-                            vaccine_taken = slots.get(slot_no).getVaccine();
-                            doses_taken++;
-                            slots.get(slot_no).decreaseQty(); //decrease slot quantity
-
-                            if (vaccine_taken.getDoses() == doses_taken) {
-                                vaccination_status = "FULLY VACCINATED";
-                            } else {
-                                vaccination_status = "PARTIALLY VACCINATED";
-                                next_dose_date = slots.get(slot_no).getDay() + vaccine_taken.getGap(); // next date = current day + gap
-                            }
-
-                            System.out.println(name + " vaccinated with " + vaccine_taken.getName());
-
-                        }
-
-                    } else if (vaccination_status.equals("PARTIALLY VACCINATED")) {
-
-                        ArrayList<Integer> temp_slot_id = new ArrayList<Integer>(); // to store eligible slot ids (for error checking)
-                        int tempflag = 0;
-                        for (int i = 0; i < slots.size(); ++i) {
-                            if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0 && slots.get(i).getDay() == next_dose_date) {
-                                System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
-                                temp_slot_id.add(i);
-                                tempflag = 1;
-                            }
-                        }
-                        if (tempflag == 0) {
-                            System.out.println("No Slots Available");
-                        } else {
-                            System.out.print("Choose Slot: ");
-                            int slot_no = sc.nextInt();
-                            sc.nextLine(); // eat the buffer
-                            if (!temp_slot_id.contains(slot_no)) {
-                                System.out.println("Slot Number Entered is not in the list shown!");
-                                return;
-                            }
-
-                            //if everything is satisfied until now, then vaccinate him/her
-                            if (!slots.get(slot_no).getVaccine().getName().equals(vaccine_taken.getName())) {
-                                System.out.println("You have chosen a different vaccine than the previous vaccine. Vaccine Mixing is not allowed");
-                                return;
-                            }
-                            //vaccine_taken = slots.get(slot_no).getVaccine();
-                            doses_taken++;
-                            slots.get(slot_no).decreaseQty(); //decrease slot quantity
-
-                            if (vaccine_taken.getDoses() == doses_taken) {
-                                vaccination_status = "FULLY VACCINATED";
-                            } else {
-                                vaccination_status = "PARTIALLY VACCINATED";
-                                next_dose_date = slots.get(slot_no).getDay() + vaccine_taken.getGap(); // next date = current day + gap
-                            }
-
-                            System.out.println(name + " vaccinated with " + vaccine_taken.getName());
-
-                        }
-
-
-                    } else if (vaccination_status.equals("FULLY VACCINATED")) {
-                        System.out.println("You are Fully Vaccinated. You are not eligible for any slots.");
-                    }*/
-
+                    getVaccinated(slots, hospitals, vaccines, hospital_id, "NULL");
 
                 }
 
@@ -316,7 +229,7 @@ public class Citizen {
                 return;
 
             }
-            default:{
+            default: {
                 System.out.println("Invalid Choice Entered! Exiting to Menu Screen!");
             }
 
