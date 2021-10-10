@@ -20,7 +20,7 @@ public class Slot {
     }
 
     public void printSlotHospital() {
-        System.out.println("Day: " + day + " Vaccine: " + vaccine.getName() + " Available Qty: " + quantity);
+        System.out.println("Day: " + day + ", Vaccine: " + vaccine.getName() + ", Available Qty: " + quantity);
 
     }
 

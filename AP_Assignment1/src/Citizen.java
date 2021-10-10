@@ -19,8 +19,8 @@ public class Citizen {
     }
 
     public boolean isEligible() {
-        return age > 18;
-    }
+        return age >= 18;
+    }   //age 18 is also valid
 
     public void checkStatus() {
         if (vaccination_status.equals("REGISTERED")) {
@@ -42,13 +42,13 @@ public class Citizen {
             for (int i = 0; i < slots.size(); ++i) {
                 if (vac_name.equals("NULL")) {  //this means case 1, from find via PinCode. All Vaccination slots of the hospital are visible
                     if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0) {
-                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
+                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + ", Available Qty: " + slots.get(i).getQuantity() + ", Vaccine: " + slots.get(i).getVaccine().getName());
                         temp_slot_id.add(i);
                         tempflag = 1;
                     }
                 } else {  //this means case 2, from find via vaccine name. So via this, if vac_name is passed(not "NULL"), then only the slots of that vaccine are visible
                     if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0 && slots.get(i).getVaccine().getName().equals(vac_name)) { //added 'and' condition for vaccine name as well
-                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
+                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + ", Available Qty: " + slots.get(i).getQuantity() + ", Vaccine: " + slots.get(i).getVaccine().getName());
                         temp_slot_id.add(i);
                         tempflag = 1;
                     }
@@ -90,13 +90,13 @@ public class Citizen {
             for (int i = 0; i < slots.size(); ++i) {
                 if (vac_name.equals("NULL")) {
                     if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0 && slots.get(i).getDay() >= next_dose_date) {  //changed from == to >= as user can take vaccine on or after next dose date
-                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
+                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + ",  Available Qty: " + slots.get(i).getQuantity() + ", Vaccine: " + slots.get(i).getVaccine().getName());
                         temp_slot_id.add(i);
                         tempflag = 1;
                     }
                 } else {
                     if (slots.get(i).getHospital().getHospital_id() == hospital_id && slots.get(i).getQuantity() > 0 && slots.get(i).getVaccine().getName().equals(vac_name) && slots.get(i).getDay() >= next_dose_date) {  //changed from == to >= as user can take vaccine on or after next dose date
-                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + " ,Available Qty: " + slots.get(i).getQuantity() + " ,Vaccine: " + slots.get(i).getVaccine().getName());
+                        System.out.println("Slot " + i + "-> Day: " + slots.get(i).getDay() + ", Available Qty: " + slots.get(i).getQuantity() + ", Vaccine: " + slots.get(i).getVaccine().getName());
                         temp_slot_id.add(i);
                         tempflag = 1;
                     }
@@ -143,7 +143,7 @@ public class Citizen {
     public void bookSlot(ArrayList<Slot> slots, ArrayList<Hospital> hospitals, ArrayList<Vaccine> vaccines) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("1. Search by PinCode");
+        System.out.println("1. Search by area");
         System.out.println("2. Search by Vaccine");
         System.out.println("3. Exit");
         System.out.print("Enter option: ");
@@ -310,6 +310,14 @@ public class Citizen {
                 }
 
                 break;  //switch case break
+            }
+            case 3: {
+                System.out.println("Exiting to Menu....");
+                return;
+
+            }
+            default:{
+                System.out.println("Invalid Choice Entered! Exiting to Menu Screen!");
             }
 
         }

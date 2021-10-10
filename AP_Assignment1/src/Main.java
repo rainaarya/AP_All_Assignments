@@ -8,7 +8,7 @@ public class Main {
 
     public void printLines() {
         //System.out.println();
-        System.out.println("----------------------------------");
+        System.out.println("---------------------------------------");
     }
 
     public void showMenu() {
