@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    //private ArrayList<Student> students = new ArrayList<Student>();
+    private ArrayList<Student> students = new ArrayList<Student>();
     private ArrayList<Instructor> instructors = new ArrayList<Instructor>();
     private ArrayList<Material> materials = new ArrayList<Material>();
     private ArrayList<Comment> comments = new ArrayList<Comment>();
 
-    // public void addStudent() {
-    //      students.add(new Student());
-    //  }
+    public void addStudent(int id) {
+        students.add(new Student(id));
+    }
 
     public void addInstructor(int id) {
         instructors.add(new Instructor(id));
@@ -24,7 +24,19 @@ public class Main {
         }
         System.out.print("Choose ID: ");
         int id = sc.nextInt();
-        instructors.get(id).enter(materials,comments);   //give access to materials & comments to instructor
+        instructors.get(id).enter(materials, comments);   //give access to materials & comments to student
+
+    }
+
+    public void enterAsStudent() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Students:");
+        for (int i = 0; i < students.size(); ++i) {
+            System.out.println(i + " - S" + i);
+        }
+        System.out.print("Choose ID: ");
+        int id = sc.nextInt();
+        students.get(id).enter(materials, comments);   //give access to materials & comments to student
 
     }
 
@@ -33,9 +45,9 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Main BagPack = new Main();
-        //BagPack.addStudent();
-        //BagPack.addStudent();
-        // BagPack.addStudent();
+        BagPack.addStudent(0);
+        BagPack.addStudent(1);
+        BagPack.addStudent(2);
         BagPack.addInstructor(0);
         BagPack.addInstructor(1);
 
@@ -54,7 +66,7 @@ public class Main {
                     break;
                 }
                 case 2: {
-
+                    BagPack.enterAsStudent();
                     break;
                 }
                 case 3: {
