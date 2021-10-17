@@ -54,7 +54,54 @@ public class Instructor implements User {
         }
     }
 
-    public void enter(ArrayList<Material> materials, ArrayList<Comment> comments) {
+    public void addAssessments(ArrayList<Assessment> assessments, ArrayList<Student> students) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Add Assignment\n" +
+                "2. Add Quiz\n");
+        System.out.print("Enter your choice: ");
+        int choice = sc.nextInt();
+        sc.nextLine(); //clear buffer
+
+        if (choice == 1) {
+            Assignment assignment = new Assignment(students);
+            assessments.add(assignment);
+        } else if (choice == 2) {
+            Quiz quiz = new Quiz(students);
+            assessments.add(quiz);
+        }
+
+    }
+
+    public void viewAssessments(ArrayList<Assessment> assessments) {
+        for (int i = 0; i < assessments.size(); ++i) {
+            System.out.print("ID: " + i + " ");
+            assessments.get(i).view();
+        }
+    }
+
+    public void closeAssessment(ArrayList<Assessment> assessments) {
+        Scanner sc = new Scanner(System.in);
+        boolean flag = false;
+        int id;
+        for (int i = 0; i < assessments.size(); ++i) {
+            if (assessments.get(i).getStatus().equals("OPEN")) {
+                System.out.println("List of Open Assessments: ");
+                System.out.print("ID: " + i + " ");
+                assessments.get(i).view();
+                flag = true;
+            }
+        }
+        if (flag == true) {
+            System.out.print("Enter the ID of assessment to close: ");
+            id = sc.nextInt();
+            sc.nextLine(); //clear buffer
+            assessments.get(id).close();
+        } else {
+            System.out.println("There are no Open Assessments!");
+        }
+    }
+
+    public void enter(ArrayList<Material> materials, ArrayList<Comment> comments, ArrayList<Assessment> assessments, ArrayList<Student> students) {
         Scanner sc = new Scanner(System.in);
         int choice;
         do {
@@ -81,11 +128,21 @@ public class Instructor implements User {
                     break;
                 }
                 case 2: {
-
+                    addAssessments(assessments, students);
                     break;
                 }
                 case 3: {
                     showMaterial(materials);
+                    break;
+                }
+
+                case 4: {
+                    viewAssessments(assessments);
+                    break;
+                }
+
+                case 6: {
+                    closeAssessment(assessments);
                     break;
                 }
 

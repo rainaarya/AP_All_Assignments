@@ -7,6 +7,7 @@ public class Main {
     private ArrayList<Instructor> instructors = new ArrayList<Instructor>();
     private ArrayList<Material> materials = new ArrayList<Material>();
     private ArrayList<Comment> comments = new ArrayList<Comment>();
+    private ArrayList<Assessment> assessments = new ArrayList<>();
 
     public void addStudent(int id) {
         students.add(new Student(id));
@@ -24,7 +25,7 @@ public class Main {
         }
         System.out.print("Choose ID: ");
         int id = sc.nextInt();
-        instructors.get(id).enter(materials, comments);   //give access to materials & comments to student
+        instructors.get(id).enter(materials, comments, assessments, students);   //give access to materials & comments to instructor
 
     }
 
@@ -36,7 +37,7 @@ public class Main {
         }
         System.out.print("Choose ID: ");
         int id = sc.nextInt();
-        students.get(id).enter(materials, comments);   //give access to materials & comments to student
+        students.get(id).enter(materials, comments,assessments);   //give access to materials & comments to student
 
     }
 

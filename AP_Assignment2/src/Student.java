@@ -30,7 +30,14 @@ public class Student implements User {
         }
     }
 
-    public void enter(ArrayList<Material> materials, ArrayList<Comment> comments) {
+    public void viewAssessments(ArrayList<Assessment> assessments) {
+        for (int i = 0; i < assessments.size(); ++i) {
+            System.out.print("ID: " + i + " ");
+            assessments.get(i).view();
+        }
+    }
+
+    public void enter(ArrayList<Material> materials, ArrayList<Comment> comments, ArrayList<Assessment> assessments) {
         Scanner sc = new Scanner(System.in);
         int choice;
         do {
@@ -55,7 +62,7 @@ public class Student implements User {
                     break;
                 }
                 case 2: {
-
+                    viewAssessments(assessments);
                     break;
                 }
 
