@@ -24,15 +24,85 @@ public class Assignment implements Assessment {
         status = "OPEN";
     }
 
+    @Override
+    public void submit(Student student) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter filename of Assignment: ");
+        String filename = sc.nextLine();
+        if (!filename.endsWith(".zip")) {
+            System.out.println("Assignment does not have the extension .zip");
+        } else {
+            submission_detail.get(student).giveSubmission(filename);
+        }
+
+    }
+
+    @Override
+    public void grade(Instructor instructor) {
+        Scanner sc = new Scanner(System.in);
+        int flag = 0;
+        int id;
+        for (Student student : submission_detail.keySet()) {
+            if (getStatus().equals("OPEN")) {
+                if (getStudentSubmissionStatus(student).equals("UNGRADED")) {
+                    ++flag;
+                    if (flag == 1) {
+                        System.out.println("Choose ID from these Ungraded Submissions: ");
+                    }
+                    System.out.println(student.getName().substring(1) + ". " + student.getName());  // check if better implementation is possible
+                }
+            }
+
+        }
+        if (flag == 0) {
+            System.out.println("Nothing is present to grade!");
+        } else {
+            System.out.print("Enter ID ");
+            id = sc.nextInt();
+            sc.nextLine(); //clear the buffer
+            Student student = null;
+            for (Student temp_student : submission_detail.keySet()) {
+                if (temp_student.getMe("S" + id)) {
+                    student = temp_student;
+                    break;
+                }
+            }
+            markSubmission(student, instructor.getName());
+
+        }
+    }
+
+    @Override
+    public void markSubmission(Student student, String instructor_name) {
+        Scanner sc = new Scanner(System.in);
+        int marks;
+        System.out.println("Submission: ");
+        System.out.println("Submission" + submission_detail.get(student).getSubmission());
+        System.out.println("Max Marks: " + max_marks);
+        System.out.print("Enter Marks Scored: ");
+        marks = sc.nextInt();
+        submission_detail.get(student).setMarks(marks,instructor_name);
+
+        sc.nextLine(); //clear the buffer
+    }
+
+    @Override
+    public String getStudentSubmissionStatus(Student student) {
+        return submission_detail.get(student).getStatus();
+    }
+
+    @Override
     public void view() {
         System.out.println("Assignment Name: " + statement + ", Max Marks: " + max_marks);
     }
 
+    @Override
     public void close() {
         status = "CLOSED";
     }
 
-    public String getStatus(){
+    @Override
+    public String getStatus() {
         return status;
     }
 

@@ -22,14 +22,30 @@ public class Quiz implements Assessment {
         status = "OPEN";
     }
 
+    @Override
+    public String getStudentSubmissionStatus(Student student) {
+        return submission_detail.get(student).getStatus();
+    }
+
+    @Override
+    public void submit(Student student) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(statement);
+        String answer = sc.nextLine();
+        submission_detail.get(student).giveSubmission(answer);
+    }
+
+    @Override
     public void view() {
         System.out.println("Quiz Question: " + statement);
     }
 
+    @Override
     public void close() {
         status = "CLOSED";
     }
 
+    @Override
     public String getStatus() {
         return status;
     }

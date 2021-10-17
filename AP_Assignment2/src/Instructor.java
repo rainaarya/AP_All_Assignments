@@ -79,6 +79,34 @@ public class Instructor implements User {
         }
     }
 
+    public void gradeAssessments(ArrayList<Assessment> assessments) {
+        Scanner sc = new Scanner(System.in);
+        int flag = 0;
+        int id;
+        for (int i = 0; i < assessments.size(); ++i) {
+            if (assessments.get(i).getStatus().equals("OPEN")) {
+                ++flag;
+                if (flag == 1) {
+                    System.out.println("List of Assessments: "); //CHECK WHAT TO DISPLAY HERE?
+                }
+                System.out.print("ID: " + i + " ");
+                assessments.get(i).view();
+
+            }
+
+        }
+
+        if (flag == 0) {
+            System.out.println("No Assessments present!");
+        } else {
+            System.out.print("Enter ID of Assessment to view Submissions: ");
+            id = sc.nextInt();
+            sc.nextLine(); //clear buffer
+            assessments.get(id).grade(this);
+
+        }
+    }
+
     public void closeAssessment(ArrayList<Assessment> assessments) {
         Scanner sc = new Scanner(System.in);
         boolean flag = false;
@@ -138,6 +166,11 @@ public class Instructor implements User {
 
                 case 4: {
                     viewAssessments(assessments);
+                    break;
+                }
+
+                case 5: {
+                    gradeAssessments(assessments);
                     break;
                 }
 
