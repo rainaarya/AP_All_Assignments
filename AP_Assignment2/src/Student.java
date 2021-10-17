@@ -72,6 +72,25 @@ public class Student implements User {
 
     }
 
+    public void viewGrades(ArrayList<Assessment> assessments) {
+
+        System.out.println("Graded Submissions: ");
+        for (int i = 0; i < assessments.size(); ++i) {
+
+            if (assessments.get(i).getStudentSubmissionStatus(this).equals("GRADED")) {
+                assessments.get(i).getGraded(this);
+            }
+        }
+        System.out.println();
+
+        System.out.println("Ungraded Submissions: ");
+        for (int i = 0; i < assessments.size(); ++i) {
+            if (assessments.get(i).getStudentSubmissionStatus(this).equals("UNGRADED")) {
+                assessments.get(i).getUngraded(this);
+            }
+        }
+    }
+
     public void enter(ArrayList<Material> materials, ArrayList<Comment> comments, ArrayList<Assessment> assessments) {
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -103,6 +122,12 @@ public class Student implements User {
 
                 case 3: {
                     submitAssessments(assessments);
+                    break;
+                }
+
+                case 4: {
+                    viewGrades(assessments);
+                    break;
                 }
 
                 case 5: {

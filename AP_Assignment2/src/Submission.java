@@ -20,6 +20,13 @@ public class Submission {
 
     }
 
+    public void showGrades() {
+        System.out.println("Submission: " + answer);
+        System.out.println("Marks scored: " + marks);
+        System.out.println("Graded by: " + grader_name);
+        System.out.println();
+    }
+
     public String getSubmission() {
         return answer;
     }

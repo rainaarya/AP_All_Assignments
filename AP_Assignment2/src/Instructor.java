@@ -109,17 +109,19 @@ public class Instructor implements User {
 
     public void closeAssessment(ArrayList<Assessment> assessments) {
         Scanner sc = new Scanner(System.in);
-        boolean flag = false;
+        int flag = 0;
         int id;
         for (int i = 0; i < assessments.size(); ++i) {
             if (assessments.get(i).getStatus().equals("OPEN")) {
-                System.out.println("List of Open Assessments: ");
+                flag++;
+                if (flag == 1)
+                    System.out.println("List of Open Assessments: ");
                 System.out.print("ID: " + i + " ");
                 assessments.get(i).view();
-                flag = true;
+
             }
         }
-        if (flag == true) {
+        if (flag >= 1) {
             System.out.print("Enter the ID of assessment to close: ");
             id = sc.nextInt();
             sc.nextLine(); //clear buffer

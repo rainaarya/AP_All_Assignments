@@ -38,6 +38,16 @@ public class Assignment implements Assessment {
     }
 
     @Override
+    public void getGraded(Student student) {
+        submission_detail.get(student).showGrades();
+    }
+
+    @Override
+    public void getUngraded(Student student) {
+        System.out.println("Submission: " + submission_detail.get(student).getSubmission());
+    }
+
+    @Override
     public void grade(Instructor instructor) {
         Scanner sc = new Scanner(System.in);
         int flag = 0;
@@ -67,24 +77,20 @@ public class Assignment implements Assessment {
                     break;
                 }
             }
-            markSubmission(student, instructor.getName());
+            //markSubmission(student, instructor.getName());
+            int marks;
+            System.out.println("Submission Details ");
+            System.out.println("Submission: " + submission_detail.get(student).getSubmission());
+            System.out.println("Max Marks: " + max_marks);
+            System.out.print("Enter Marks Scored: ");
+            marks = sc.nextInt();
+            sc.nextLine(); //clear the buffer
+            submission_detail.get(student).setMarks(marks, instructor.getName());
+
 
         }
     }
 
-    @Override
-    public void markSubmission(Student student, String instructor_name) {
-        Scanner sc = new Scanner(System.in);
-        int marks;
-        System.out.println("Submission: ");
-        System.out.println("Submission" + submission_detail.get(student).getSubmission());
-        System.out.println("Max Marks: " + max_marks);
-        System.out.print("Enter Marks Scored: ");
-        marks = sc.nextInt();
-        submission_detail.get(student).setMarks(marks,instructor_name);
-
-        sc.nextLine(); //clear the buffer
-    }
 
     @Override
     public String getStudentSubmissionStatus(Student student) {

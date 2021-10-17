@@ -11,5 +11,8 @@ public interface Assessment {
 
     public void grade(Instructor instructor);
 
-    public void markSubmission(Student student, String instructor_name);
+    public void getGraded(Student student);
+
+    public void getUngraded(Student student);
+
 }

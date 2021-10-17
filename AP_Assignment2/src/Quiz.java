@@ -30,9 +30,63 @@ public class Quiz implements Assessment {
     @Override
     public void submit(Student student) {
         Scanner sc = new Scanner(System.in);
-        System.out.print(statement);
+        System.out.print(statement + " ");
         String answer = sc.nextLine();
         submission_detail.get(student).giveSubmission(answer);
+    }
+
+    @Override
+    public void getGraded(Student student) {
+        submission_detail.get(student).showGrades();
+    }
+
+    @Override
+    public void getUngraded(Student student) {
+        System.out.println("Submission: " + submission_detail.get(student).getSubmission());
+    }
+
+    @Override
+    public void grade(Instructor instructor) {
+        Scanner sc = new Scanner(System.in);
+        int flag = 0;
+        int id;
+        for (Student student : submission_detail.keySet()) {
+            if (getStatus().equals("OPEN")) {
+                if (getStudentSubmissionStatus(student).equals("UNGRADED")) {
+                    ++flag;
+                    if (flag == 1) {
+                        System.out.println("Choose ID from these Ungraded Submissions: ");
+                    }
+                    System.out.println(student.getName().substring(1) + ". " + student.getName());  // check if better implementation is possible
+                }
+            }
+
+        }
+        if (flag == 0) {
+            System.out.println("Nothing is present to grade!");
+        } else {
+            System.out.print("Enter ID ");
+            id = sc.nextInt();
+            sc.nextLine(); //clear the buffer
+            Student student = null;
+            for (Student temp_student : submission_detail.keySet()) {
+                if (temp_student.getMe("S" + id)) {
+                    student = temp_student;
+                    break;
+                }
+            }
+            //markSubmission(student, instructor.getName());
+            int marks;
+            System.out.println("Submission: ");
+            System.out.println("Submission" + submission_detail.get(student).getSubmission());
+            System.out.println("Max Marks: " + max_marks);
+            System.out.print("Enter Marks Scored: ");
+            marks = sc.nextInt();
+            sc.nextLine(); //clear the buffer
+            submission_detail.get(student).setMarks(marks, instructor.getName());
+
+
+        }
     }
 
     @Override
