@@ -77,8 +77,8 @@ public class Quiz implements Assessment {
             }
             //markSubmission(student, instructor.getName());
             int marks;
-            System.out.println("Submission: ");
-            System.out.println("Submission" + submission_detail.get(student).getSubmission());
+            System.out.println("Submission Details ");
+            System.out.println("Submission: " + submission_detail.get(student).getSubmission());
             System.out.println("Max Marks: " + max_marks);
             System.out.print("Enter Marks Scored: ");
             marks = sc.nextInt();

@@ -37,7 +37,7 @@ public class Main {
         }
         System.out.print("Choose ID: ");
         int id = sc.nextInt();
-        students.get(id).enter(materials, comments,assessments);   //give access to materials & comments to student
+        students.get(id).enter(materials, comments, assessments);   //give access to materials & comments to student
 
     }
 
