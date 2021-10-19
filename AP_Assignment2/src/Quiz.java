@@ -83,7 +83,7 @@ public class Quiz implements Assessment {
             System.out.print("Enter Marks Scored: ");
             marks = sc.nextInt();
             sc.nextLine(); //clear the buffer
-            submission_detail.get(student).setMarks(marks, instructor.getName());
+            submission_detail.get(student).setMarks(marks, instructor);
 
 
         }

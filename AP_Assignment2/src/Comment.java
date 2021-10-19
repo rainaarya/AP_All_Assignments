@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class Comment {
     private String comment;
-    private String person_name;
+    private User user;
     private Date date_of_upload;
 
     public Comment(User user) {
-        person_name = user.getName();
+        this.user = user;
         this.getComment();
     }
 
@@ -20,7 +20,7 @@ public class Comment {
     }
 
     public void showComment() {
-        System.out.println(comment + " - " + person_name);
+        System.out.println(comment + " - " + user.getName());
         System.out.println(date_of_upload);
         System.out.println();
     }

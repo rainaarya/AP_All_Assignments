@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    private ArrayList<Student> students = new ArrayList<Student>();
-    private ArrayList<Instructor> instructors = new ArrayList<Instructor>();
-    private ArrayList<Material> materials = new ArrayList<Material>();
-    private ArrayList<Comment> comments = new ArrayList<Comment>();
-    private ArrayList<Assessment> assessments = new ArrayList<>();
+    private final ArrayList<Student> students = new ArrayList<Student>();
+    private final ArrayList<Instructor> instructors = new ArrayList<Instructor>();
+    private final ArrayList<Material> materials = new ArrayList<Material>();
+    private final ArrayList<Comment> comments = new ArrayList<Comment>();
+    private final ArrayList<Assessment> assessments = new ArrayList<>();
 
     public void addStudent(int id) {
         students.add(new Student(id));

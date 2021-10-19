@@ -2,7 +2,7 @@ public class Submission {
     private String status;
     private int marks;
     private String answer;
-    private String grader_name;
+    private Instructor instructor;
 
     public Submission() {
         status = "NOT SUBMITTED";
@@ -13,9 +13,9 @@ public class Submission {
         changeToUngraded();
     }
 
-    public void setMarks(int marks, String instructor_name) {
+    public void setMarks(int marks, Instructor instructor) {
         this.marks = marks;
-        this.grader_name = instructor_name;
+        this.instructor = instructor;
         changeToGraded();
 
     }
@@ -23,7 +23,7 @@ public class Submission {
     public void showGrades() {
         System.out.println("Submission: " + answer);
         System.out.println("Marks scored: " + marks);
-        System.out.println("Graded by: " + grader_name);
+        System.out.println("Graded by: " + instructor.getName());
         System.out.println();
     }
 
