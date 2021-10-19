@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Assignment implements Assessment {
     private final String statement;
     private final int max_marks;
     private String status;
-    private final HashMap<Student, Submission> submission_detail = new HashMap<>();
+    private final LinkedHashMap<Student, Submission> submission_detail = new LinkedHashMap<>();
 
     public Assignment(ArrayList<Student> students) {
         Scanner sc = new Scanner(System.in);
