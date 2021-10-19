@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Student implements User {
-    private String name;
+    private final String name;
 
     public Student(int id) {
         this.name = "S" + id;

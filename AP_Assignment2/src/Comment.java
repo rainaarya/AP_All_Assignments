@@ -2,16 +2,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Comment {
-    private String comment;
-    private User user;
-    private Date date_of_upload;
+    private final String comment;
+    private final User user;
+    private final Date date_of_upload;
 
     public Comment(User user) {
         this.user = user;
-        this.getComment();
-    }
-
-    public void getComment() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter comment: ");
         comment = sc.nextLine();

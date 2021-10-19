@@ -3,17 +3,13 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Slide implements Material {
-    private String topic;
-    private int number;
-    private String contents[];
-    private Date date_of_upload;    //Date object to store date
-    private Instructor instructor;
+    private final String topic;
+    private final int number;
+    private final String contents[];
+    private final Date date_of_upload;    //Date object to store date
+    private final Instructor instructor;
 
     public Slide(Instructor instructor) {
-        this.addSlide(instructor);
-    }
-
-    public void addSlide(Instructor instructor) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter topic of slides: ");
         this.topic = sc.nextLine();

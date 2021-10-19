@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Instructor implements User {
 
-    private String name;
+    private final String name;
 
     public Instructor(int id) {
         this.name = "I" + id;

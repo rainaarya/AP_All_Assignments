@@ -3,16 +3,12 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Assignment implements Assessment {
-    private String statement;
-    private int max_marks;
+    private final String statement;
+    private final int max_marks;
     private String status;
-    private HashMap<Student, Submission> submission_detail = new HashMap<>();
+    private final HashMap<Student, Submission> submission_detail = new HashMap<>();
 
     public Assignment(ArrayList<Student> students) {
-        this.create(students);
-    }
-
-    public void create(ArrayList<Student> students) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter problem statement: ");
         statement = sc.nextLine();

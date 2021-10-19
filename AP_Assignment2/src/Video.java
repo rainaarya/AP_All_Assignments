@@ -3,16 +3,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Video implements Material {
-    private String topic;
-    private String filename;
-    private Date date_of_upload;    //Date object to store date
-    private Instructor instructor;
+    private final String topic;
+    private final String filename;
+    private final Date date_of_upload;    //Date object to store date
+    private final Instructor instructor;
 
     public Video(Instructor instructor) {
-        this.addVideo(instructor);
-    }
-
-    public void addVideo(Instructor instructor) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter topic of video: ");
         this.topic = sc.nextLine();
