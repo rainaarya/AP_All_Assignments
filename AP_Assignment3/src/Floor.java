@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 abstract class Floor {
-    private int floor_location;
+    private final int floor_location;
 
-    public void setFloor_location(int location) {
+    public Floor(int location) {
         floor_location = location;
     }
 

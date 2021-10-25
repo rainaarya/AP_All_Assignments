@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class EmptyFloor extends Floor {
 
     public EmptyFloor(int location) {
-        setFloor_location(location);
+        super(location);
     }
 
     @Override

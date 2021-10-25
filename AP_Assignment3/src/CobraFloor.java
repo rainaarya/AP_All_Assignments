@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class CobraFloor extends Floor {
 
     public CobraFloor(int location) {
-        setFloor_location(location);
+        super(location);
     }
 
     @Override

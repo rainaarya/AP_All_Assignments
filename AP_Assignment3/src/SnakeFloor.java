@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class SnakeFloor extends Floor {
 
     public SnakeFloor(int location) {
-        setFloor_location(location);
+        super(location);
     }
 
     @Override
