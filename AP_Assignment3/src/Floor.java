@@ -11,6 +11,6 @@ abstract class Floor {
         return floor_location;
     }
 
-    abstract void performFloorAction(Player player, Game game, ArrayList<Floor> floors);
+    abstract void performFloorAction(Player player, ArrayList<Floor> floors);
 
 }
