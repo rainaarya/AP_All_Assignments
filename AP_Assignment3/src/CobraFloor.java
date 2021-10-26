@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class CobraFloor extends Floor {
+public class CobraFloor extends SnakeFloor {
 
     public CobraFloor(int location) {
         super(location);

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ElevatorFloor extends Floor {
+public class ElevatorFloor extends LadderFloor {
 
     public ElevatorFloor(int location) {
         super(location);
