@@ -16,6 +16,7 @@ public class Main {
             Game game = new Game(player, dice);
             game.play();
         } else if(ch == 'y' || ch == 'Y'){
+            System.out.println("This Bonus Implementation Supports Multiplayer & the Player with most points in the end wins. (or becomes a tie if points are same)\n");
             System.out.println("For First Player");
             Player player = new Player();
             System.out.println("For Second Player");
