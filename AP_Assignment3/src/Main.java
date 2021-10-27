@@ -15,7 +15,7 @@ public class Main {
             Dice dice = new Dice();
             Game game = new Game(player, dice);
             game.play();
-        } else {
+        } else if(ch == 'y' || ch == 'Y'){
             System.out.println("For First Player");
             Player player = new Player();
             System.out.println("For Second Player");
@@ -24,6 +24,8 @@ public class Main {
             Game game = new Game(player, dice);
             game.addPlayer(player2);
             game.play();
+        }else{
+            System.out.println("Invalid Option Chosen!");
         }
 
     }
